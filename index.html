@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.count-up {
+  font-size: 22px;
+  color: #337FE5; /* 藍色 */
+}
+</style>
+</head>
+<body>
+
+<ol>
+  <li>女性董事占比為<span class="count-up" data-target="22">0</span> %</li>
+  <li>在地採購金額占比達<span class="count-up" data-target="98">0</span> %</li>
+  <li>近3 年再生原物料平均占比達<span class="count-up" data-target="59.37">0</span>%</li>
+  <li>完成ISO 14064-1:2018 溫室氣體盤查及第三方查證</li>
+  <li>專案開發工程案件未因污染環境事件遭主管機關裁罰</li>
+  <li>專案開發工程案件未發生與缺陷與安全相關的重新施工情形</li>
+  <li>基本薪資性別比（女／男）為<span class="count-up" data-target="1.21">0</span>、基本薪資加薪酬性別比（女／男）為<span class="count-up" data-target="1.42">0</span></li>
+  <li>身障人士超額晉用<span class="count-up" data-target="5">0</span> 人及原住民超額晉用<span class="count-up" data-target="4">0</span> 人（法定要求2 人）</li>
+  <li><span class="count-up" data-target="0">0</span> 失能傷害事件</li>
+</ol>
+
+<script>
+const countUpElements = document.querySelectorAll('.count-up');
+
+countUpElements.forEach(element => {
+  const targetValue = parseFloat(element.dataset.target);
+  let currentValue = 0;
+  const increment = targetValue / 50; // 假設動畫分成 50 步
+  const interval = setInterval(() => {
+    currentValue += increment;
+    element.textContent = currentValue.toFixed(2); // 保留兩位小數
+    if (currentValue >= targetValue) {
+      clearInterval(interval);
+      element.textContent = targetValue; // 確保最終值精確
+    }
+  }, 20); // 每 20 毫秒更新一次，總共 2 秒
+});
+</script>
+
+</body>
+</html>
